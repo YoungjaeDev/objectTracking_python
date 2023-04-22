@@ -24,6 +24,7 @@ elif tracker_type == "MEDIANFLOW":
     tracker = cv2.legacy.TrackerMedianFlow_create()
 elif tracker_type == "MOSSE":
     tracker = cv2.legacy.TrackerMOSSE_create()
+# CSRT (DISCRIMINATIVE CORRELATION FILTER WITH CHANNEL AND SPATIAL RELIABILITY)
 elif tracker_type == "CSRT":
     tracker = cv2.legacy.TrackerCSRT_create()
     
