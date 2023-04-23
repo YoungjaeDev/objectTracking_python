@@ -4,9 +4,10 @@ Official Link: <https://vcpkg.io/en/index.html>
 
 ```cmd
 mkdir -p external && cd external
-git clone https://github.com/Microsoft/vcpkg.git --depth 1
+git clone https://github.com/Microsoft/vcpkg.git
 # .\vcpkg\bootstrap-vcpkg.bat # windows
 ./vcpkg/bootstrap-vcpkg.sh # Unix
-export PATH=$PATH:${PWD}/vcpkg
+echo "export PATH=$PATH:${PWD}/vcpkg" >> ~/.bashrc
+. ~/.bashrc
 vcpkg
 ```

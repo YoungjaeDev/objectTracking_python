@@ -1,17 +1,21 @@
 {
     "name": "my-project",
     "version": "0.1.0",
+    "builtin-baseline": "80d52af7c8fbdf817a162bacf110d1526d85daf6",
     "dependencies": [
         {
-            "name": "opencv4",
+            "name": "opencv",
+            "version>=": "4.5.0",
             "features": [
                 "contrib",
                 "dnn",
                 "ffmpeg",
-                "gtk",
                 "tbb",
                 "openmp"
             ]
         }
+    ],
+    "overrides": [
+        { "name": "opencv", "version": "4.5.0" }
     ]
 }
