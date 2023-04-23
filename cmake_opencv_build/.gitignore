@@ -1,1 +1,3 @@
 external/
+build/
+vcpkg_installed/
