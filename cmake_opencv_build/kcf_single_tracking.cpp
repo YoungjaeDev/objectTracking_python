@@ -5,24 +5,22 @@
 #include <random>
 
 int main() {
-    std::vector<std::string> tracker_types = {"KCF", "CSRT"};
-    std::string tracker_type = tracker_types.front(); // back
+    std::string tracker_type = "KCF"; // back
 
     std::cout << tracker_type << std::endl;
 
     cv::Ptr<cv::Tracker> tracker;
     cv::TrackerKCF::Params params;
 
-    if (tracker_type == "KCF") {
-        tracker = cv::TrackerKCF::create();
-    }  else if (tracker_type == "CSRT") {
-        tracker = cv::TrackerCSRT::create();
-    }
+    // params.compress_feature = 0; // disable feature compression
+    // params.resize = 0; // disable image resizing
+    // params.sigma = 0.1f; // use a smaller Gaussian kernel
+    // params.output_sigma_factor = 0.1f; // use a larger spatial bandwidth
+    // params.max_patch_size = 500; // reduce the maximum patch size
+    // params.lambda = 0.0001f; // keep the default regularization value
 
-    params.resize = true;
+    tracker = cv::TrackerKCF::create(params);
     
-    std::cout << tracker << std::endl;
-
     cv::VideoCapture video("Videos/race.mp4");
 
     if (!video.isOpened()) {
@@ -48,7 +46,7 @@ int main() {
     cv::Scalar colors(distrib(gen), distrib(gen), distrib(gen));
 
     while (true) {
-        cv::Rect updated_bbox;
+        cv::Rect2d updated_bbox;
         ok = video.read(frame);
 
         if (!ok) {
